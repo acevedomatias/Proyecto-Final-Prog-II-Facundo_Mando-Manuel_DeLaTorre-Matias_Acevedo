@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Carrito{% endblock %}
+
+{% block content %}
+    <h2>Carrito de Compras</h2>
+    {% if cart_items %}
+        <ul class="cart-grid">
+            {% for item in cart_items %}
+                <li class="cart-item">
+                    <h3>{{ item.producto.nombre }}</h3>
+                    <img src="{{ item.producto.imagen_url }}" alt="{{ item.producto.nombre }}">
+                    <p><strong>Cantidad:</strong> {{ item.cantidad }}</p>
+                    <p><strong>Total:</strong> ${{ item.total_price }}</p>
+                    <br>
+                    <div class="cart-item-buttons">
+                        <a href="{{ url_for('main.remove_from_cart', producto_id=item.producto.id) }}">Eliminar uno</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <h3><strong>Total a Pagar:</strong> ${{ total }}</h3>
+    {% else %}
+        <p>Tu carrito está vacío.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/iconogrande.png') }}" alt="Imagen Logo Rincón Matero">
+            <h1 class="rincon">Rincón Matero</h1>
+        <div>
+            </div>
+            <nav>
+                <a href="{{ url_for('main.index') }}">Inicio</a>
+                <a href="{{ url_for('main.catalogo') }}">Catálogo</a>
+                <a href="{{ url_for('main.carrito') }}">Carrito</a>
+                <a href="{{ url_for('main.quienes_somos') }}">Quiénes Somos</a>
+                <a href="{{ url_for('main.preguntas_frecuentes') }}">Preguntas Frecuentes</a>
+                <a href="{{ url_for('main.contacto') }}">Contacto</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div>
+        <p>Copyright © 2024 Rincón Matero. Todos los derechos reservados.</p>
+        <p>El contenido de este sitio web, incluyendo textos, imágenes y gráficos, está protegido por derechos de autor. Queda prohibida la reproducción o distribución sin autorización expresa. Para más información, contáctanos.</p>
+        <a href="mailto:Rinconmatero@gmail.com">✉ Rinconmatero@gmail.com</a>
+        <p></p>
+        <a href="https://policies.google.com/privacy?hl=es">Politica de privacidad</a>
+        </div>
+    </footer>
+</body>
+</html>

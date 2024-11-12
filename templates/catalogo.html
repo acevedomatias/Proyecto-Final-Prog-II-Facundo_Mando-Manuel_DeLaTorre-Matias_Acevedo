@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Catálogo{% endblock %}
+
+{% block content %}
+    <h2>Catálogo de Productos</h2>
+    <br>
+    <a href="{{ url_for('main.agregar_producto') }}" class="btn-agregar">Agregar Nuevo Producto</a>
+    <div class="catalog-grid">
+        {% for producto in productos %}
+            <div class="catalog-item">
+                <h3>{{ producto.nombre }}</h3>
+                <br>
+                <img src="{{ producto.imagen_url }}" alt="{{ producto.nombre }}">
+                <p>{{ producto.descripcion }}</p>
+                <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+                <br>
+                <div class="catalog-item-buttons">
+                    <a href="{{ url_for('main.add_to_cart', producto_id=producto.id) }}"> Agregar al Carrito </a>
+                    <a href="{{ url_for('main.editar_producto', producto_id=producto.id) }}">Editar</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

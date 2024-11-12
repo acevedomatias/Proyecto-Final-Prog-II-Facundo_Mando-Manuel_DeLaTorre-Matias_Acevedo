@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+    <h2>Contacto</h2>
+    <form id="contactForm">
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre" required> <br><br>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required> <br><br>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="10" cols="40" required></textarea> <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    <div id="mensaje-exito-container" style="display:none;">
+        <p id="mensaje-exito"></p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const nombre = document.getElementById('nombre').value.trim();
+                const correo = document.getElementById('correo').value.trim();
+                const mensaje = document.getElementById('mensaje').value.trim();
+                if (!nombre || !correo || !mensaje || mensaje === 'Escribe tu mensaje...') {
+                    alert('Por favor, completa todos los campos.');
+                    return;
+                }
+                const successMessage = document.getElementById('mensaje-exito');
+                const successContainer = document.getElementById('mensaje-exito-container');
+                successMessage.textContent = 'Mensaje enviado correctamente.';
+                successContainer.style.display = 'block';
+                setTimeout(() => {
+                    successContainer.style.display = 'none';
+                    form.reset();
+                }, 1500);
+            });
+        });
+    </script>
+{% endblock %}

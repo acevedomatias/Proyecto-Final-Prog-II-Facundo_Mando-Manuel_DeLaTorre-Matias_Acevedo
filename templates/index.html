@@ -6,11 +6,17 @@
     <h2>¡Bienvenidos!</h2>
     <p>Aquí podrás encontrar los mejores Mates al mejor precio.</p>
     <br>
-    <h2>Productos Destacados</h2>
+    <h2 class="productos-destacados">Productos Destacados</h2>
     
     <main class="destacados">
-        <img class="imgdestacados" src="{{ url_for('static', filename='images/mate1.png') }}" alt="Mate camionero">
-        <img class="imgdestacados" src="{{ url_for('static', filename='images/mate3.png') }}" alt="Mate casquito c/virola">
-        <img class="imgdestacados" src="{{ url_for('static', filename='images/mate2.png') }}" alt="Mate camionero">
+        <a href="{{ url_for('main.catalogo') }}">
+            <img class="imgdestacados" src="{{ url_for('static', filename='images/mate1.png') }}" alt="Mate camionero">
+        </a>
+        <a href="{{ url_for('main.catalogo') }}">
+            <img class="imgdestacados" src="{{ url_for('static', filename='images/mate3.png') }}" alt="Mate casquito c/virola">
+        </a>
+        <a href="{{ url_for('main.catalogo') }}">
+            <img class="imgdestacados" src="{{ url_for('static', filename='images/mate2.png') }}" alt="Mate camionero">
+        </a>
     </main>
 {% endblock %}
